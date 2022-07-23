@@ -5,8 +5,8 @@ const Project = require('./model')
 
 router.get('/', (req, res, next) => {
     Project.getProjects()
-        .then(projects => {
-            res.json(projects)
+        .then(project => {
+            res.json(project)
         })
         .catch(next)
 })

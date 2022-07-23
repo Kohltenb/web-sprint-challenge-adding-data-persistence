@@ -6,7 +6,7 @@ const db = require('../../data/dbConfig')
 // }
 function getProjects () {
     return db('projects')
-    .select('project_name', 'project_description', 'project_completed')
+    .select('project_completed', 'project_description', 'project_name')
 }
 
 function add(project) {
