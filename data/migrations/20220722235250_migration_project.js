@@ -12,7 +12,7 @@ exports.up = async function(knex) {
     })
     .createTable('resources', tbl => {
         tbl.increments('resource_id')
-        tbl.string('resources_name').notNullable().unique()
+        tbl.string('resource_name').notNullable().unique()
         tbl.string('resource_description')
     })
     .createTable('tasks', tbl => {

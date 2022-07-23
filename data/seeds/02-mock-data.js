@@ -1,8 +1,8 @@
 const projects = [
-    { project_name: 'sprint test', project_description: 'foobar', project_completed: 0},
-    { project_name: 'sprint foo', project_description: 'foo foo', project_completed: 1},
-    { project_name: 'sprint bar', project_description: 'bar bar', project_completed: 0},
-    { project_name: 'sprint baz', project_description: 'baz baz', project_completed: 1}
+    { project_name: 'sprint test', project_description: 'foobar', project_completed: false},
+    { project_name: 'sprint foo', project_description: 'foo foo', project_completed: false},
+    { project_name: 'sprint bar', project_description: 'bar bar', project_completed: false},
+    { project_name: 'sprint baz', project_description: 'baz baz', project_completed: false}
 ]
 
 const resources = [
@@ -11,10 +11,10 @@ const resources = [
 ]
 
 const tasks = [
-    {task_description: 'fight the sith', task_notes: 'use the force', task_completed: 0},
-    {task_description: 'kick butt', task_notes: 'with lightsabers', task_completed: 0},
-    {task_description: 'take names', task_notes: 'lots of names', task_completed: 1},
-    {task_description: 'eat ice cream', task_notes: 'vanilla is best', task_completed: 1},
+    {task_description: 'fight the sith', task_notes: 'use the force', task_completed: true, project_id: 1},
+    {task_description: 'kick butt', task_notes: 'with lightsabers', task_completed: true, project_id: 3},
+    {task_description: 'take names', task_notes: 'lots of names', task_completed: true, project_id: 4},
+    {task_description: 'eat ice cream', task_notes: 'vanilla is best', task_completed: true, project_id: 2},
 ]
 
 exports.seed = async function (knex) {
