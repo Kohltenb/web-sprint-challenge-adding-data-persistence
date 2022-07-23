@@ -3,7 +3,11 @@ const router = require('express').Router()
 const Project = require('./model')
 
 router.get('/', (req, res, next) => {
-
+    Project.getAll()
+    .then(projects => {
+        res.json(projects)
+    })
+    .catch(next)
 })
 
 router.use((err, req, res, next) => { //eslint-disable-line
