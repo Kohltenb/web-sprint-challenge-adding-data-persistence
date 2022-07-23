@@ -6,8 +6,14 @@ const db = require('../../data/dbConfig')
 // }
 function getProjects () {
     return db('projects')
+    .select('project_name', 'project_description', 'project_completed')
 }
 
+function add(project) {
+    return db('projects').insert(project)
+    .then(([project_id]) => {
+        return db('projects').where('project_id', project_id).first()
+    })
+}
 
-
-module.exports = { getProjects }
+module.exports = { getProjects, add }
