@@ -11,13 +11,26 @@ router.get('/', (req, res, next) => {
         .catch(next)
 })
 
-router.post('/', validateProject, (req, res, next) => {
-    const newProject = req.body
-    Project.add(newProject)
-    .then(newProject => {
-        res.status(200).json(newProject)
-    })
-    .catch(next)
+router.post('/', validateProject, async (req, res, next) => {
+   try {
+    const project = req.body
+   const newProject = await Project.insert(project)
+    res.json(newProject) 
+   // if(newProject.project_completed === 0) {
+    //     res.json({
+    //         ...newProject,
+    //         project_completed: newProject.project_completed = false
+    //     })
+    // } else {
+    //     res.json({
+    //         ...newProject,
+    //         project_completed: newProject.project_completed = true
+    //     })
+    // }
+   } catch (err) {
+    next(err)
+   }
+     
 })
 
 router.use((err, req, res, next) => { //eslint-disable-line

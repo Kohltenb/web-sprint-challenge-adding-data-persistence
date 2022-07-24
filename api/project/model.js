@@ -6,14 +6,29 @@ const db = require('../../data/dbConfig')
 // }
 function getProjects () {
     return db('projects')
-    .select('project_completed', 'project_description', 'project_name')
+    .then((projects) => 
+    projects.map((proj) => ({
+        ...proj,
+        project_completed: proj.project_completed ? true : false,
+    }))
+    )
 }
 
-function add(project) {
-    return db('projects').insert(project)
-    .then(([project_id]) => {
-        return db('projects').where('project_id', project_id).first()
-    })
+function insert(project) {
+    return db('projects').insert(project, 'project_id')
+     .then(([project_id]) => db('projects').where({ project_id }))
+     .then((projects) => 
+    projects.map((proj) => ({
+        ...proj,
+        project_completed: proj.project_completed ? true : false,
+    }))
+    )
+    // .then((project) => {
+    //     return {
+    //         ...project,
+    //         project_completed: project.project_completed ? true : false
+    //     }
+    // })
 }
 
-module.exports = { getProjects, add }
+module.exports = { getProjects, insert }
