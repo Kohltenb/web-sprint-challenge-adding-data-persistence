@@ -24,13 +24,5 @@ function add(task) {
    }))
    )
 }
-// .then(([task_id]) => {
-//     return db('tasks').where('task_id', task_id).first()
-//     .then((tasks) => 
-//     tasks.map((task) => ({
-//     ...task,
-//     task_completed: task.task_completed ? true : false,
-// }))
-// )
-// })
+
 module.exports = { getTasks, add }
