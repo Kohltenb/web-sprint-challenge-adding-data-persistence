@@ -15,13 +15,15 @@ function getProjects() {
 }
 
 function insert(project) {
-    return db('projects').insert(project, 'project_id')
+   return db('projects').insert(project, 'project_id')
         .then(([project_id]) => db('projects').where({ project_id }))
         .then((projects) =>
             projects.map((proj) => ({
-                ...proj,
                 project_completed: proj.project_completed ? true : false,
+                project_description: proj.project_description,
+                project_name: proj.project_name
             }))
+            
         )
 }
 
