@@ -15,7 +15,7 @@ router.post('/', validateProject, async (req, res, next) => {
    try {
     const project = req.body
    const newProject = await Project.insert(project)
-    res.json(newProject) 
+    res.json(newProject[0]) 
    // if(newProject.project_completed === 0) {
     //     res.json({
     //         ...newProject,

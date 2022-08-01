@@ -16,7 +16,7 @@ router.post('/', validateTask, (req, res, next) => {
 
     Task.add(td)
     .then(newTask => {
-        res.status(200).json(newTask)
+        res.status(200).json(newTask[0])
     })
     .catch(next)
 })

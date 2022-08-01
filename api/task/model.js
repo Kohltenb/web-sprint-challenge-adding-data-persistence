@@ -19,8 +19,9 @@ function add(task) {
     .then(([task_id]) => db('tasks').where({ task_id }))
     .then((tasks) => 
    tasks.map((task) => ({
-       ...task,
        task_completed: task.task_completed ? true : false,
+       task_description: task.task_description,
+       task_notes: task.task_notes
    }))
    )
 }
